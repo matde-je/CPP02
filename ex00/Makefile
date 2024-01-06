@@ -5,11 +5,11 @@ CC = g++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp .cpp
+SRCS = main.cpp Fixed.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
-name = 
+name = fixed
 
 # Build name
 $(name): $(OBJS)

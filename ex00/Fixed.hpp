@@ -1,5 +1,4 @@
 
-
 #ifndef Fixed_HPP
 #define Fixed_HPP
 
@@ -15,7 +14,7 @@ class Fixed {
 		~Fixed(void);
 
         Fixed(const Fixed &copy); //copy constructor
-        Fixed &operator = (const Fixed &copy); //assignation operation overload
+        Fixed &operator = (const Fixed &copy); //assignment operation
 
         int getRawBits(void) const;
         void setRawBits(int const raw);
