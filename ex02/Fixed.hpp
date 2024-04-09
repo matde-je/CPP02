@@ -8,7 +8,8 @@
 #include <cmath>
 
 
-class Fixed {
+class Fixed
+{
 	private:
         int fixed_point_value;
         static const int fractional_bits = 8;

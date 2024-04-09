@@ -35,18 +35,12 @@ Fixed::Fixed(const float i)
 
 float    Fixed::toFloat(void) const
 {
-    float f;
-
-    f = (float)fixed_point_value / (1 << fractional_bits);
-    return f;
+    return ((float)fixed_point_value / (1 << fractional_bits));
 }
 
 float    Fixed::toInt(void) const
 {
-    int i;
-
-    i = fixed_point_value / (1 << fractional_bits);
-    return i;
+    return(fixed_point_value / (1 << fractional_bits));
 }
 
 std::ostream &operator<<(std::ostream &os, const Fixed &fix) //declaration of << operator overload, takes a reference to an output stream 
@@ -75,7 +69,7 @@ bool Fixed::operator<=(const Fixed &fix)
 	return (this->toFloat() <= fix.toFloat());
 }
 
-bool Fixed::operator!=(const Fixed &fix) 
+bool Fixed::operator!=(const Fixed &fix)
 {
 	return (this->toFloat() != fix.toFloat());
 }
@@ -88,7 +82,7 @@ bool Fixed::operator==(const Fixed &fix)
 Fixed Fixed::operator+(const Fixed &fix)
 {
     return (this->toFloat() + fix.toFloat());
-}
+} 
 
 Fixed Fixed::operator-(const Fixed &fix)
 {
@@ -137,6 +131,7 @@ Fixed &Fixed::min(Fixed &a, Fixed &b)
         return (b);
 }
 
+//the function can modify the objects a and b (but it wont)
 Fixed &Fixed::max(Fixed &a, Fixed &b)
 {
     if (a.toFloat() > b.toFloat())
@@ -145,6 +140,7 @@ Fixed &Fixed::max(Fixed &a, Fixed &b)
         return (b);
 }
 
+//the function promises not to modify the objects a and b (const)
 const Fixed &Fixed::min(const Fixed &a, const Fixed &b)
 {
     if (a.toFloat() < b.toFloat())
