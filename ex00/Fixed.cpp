@@ -11,8 +11,8 @@ Fixed::Fixed(void)
 Fixed::Fixed(const Fixed &copy)
 {
     std::cout << "Copy constructor called" << std::endl;
-    this->fixed_point_value = copy.getRawBits();
-//    *this = copy; //pointer cause its a reference. calls copy assignbment operator
+    //this->fixed_point_value = copy.getRawBits();
+    *this = copy; //pointer cause its a reference. calls copy assignment operator
     return ;
 }
 

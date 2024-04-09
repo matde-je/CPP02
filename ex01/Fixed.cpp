@@ -7,11 +7,16 @@ Fixed::Fixed(void)
     return ;
 }
 
+Fixed::~Fixed()
+{
+    std::cout << "Destructor called" << std::endl;
+    return ;
+}
+
 Fixed::Fixed(const Fixed &copy)
 {
     std::cout << "Copy constructor called" << std::endl;
-    this->fixed_point_value = copy.getRawBits();
-    return ;
+    *this = copy;
 }
 
 Fixed &Fixed::operator = (const Fixed &copy)
@@ -35,24 +40,18 @@ Fixed::Fixed(const int i)
 Fixed::Fixed(const float i)
 {
     std::cout << "Float constructor called"<< std::endl;
-    fixed_point_value = (int)roundf(i * (1 << fractional_bits));
+    this->fixed_point_value = (int)roundf(i * (1 << fractional_bits));
 }
 
 //converts the fixed-point value to a floating-point value
 float    Fixed::toFloat(void) const
 {
-    float f;
-
-    f = (float)fixed_point_value / (1 << fractional_bits);
-    return f;
+    return((float)fixed_point_value / (1 << fractional_bits));
 }
 
-float    Fixed::toInt(void) const
+int    Fixed::toInt(void) const
 {
-    int i;
-
-    i = fixed_point_value / (1 << fractional_bits);
-    return i;
+    return(fixed_point_value / (1 << fractional_bits));
 }
 
 std::ostream &operator<<(std::ostream &os, const Fixed &fix) //declaration of << operator overload, takes a reference to an output stream 
@@ -60,10 +59,3 @@ std::ostream &operator<<(std::ostream &os, const Fixed &fix) //declaration of <<
 	os << fix.toFloat(); //insert the value of the float into the stream
 	return os; //returns reference to the output stream allowing chaining of << operators
 }
-
-Fixed::~Fixed()
-{
-    std::cout << "Destructor called" << std::endl;
-    return ;
-}
-

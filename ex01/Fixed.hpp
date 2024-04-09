@@ -9,7 +9,8 @@
 
 //A constructor that takes a constant floating-point number as a parameter.
 
-class Fixed {
+class Fixed
+{
 	private:
         int fixed_point_value;
         static const int fractional_bits = 8;
@@ -25,7 +26,7 @@ class Fixed {
         int getRawBits(void) const;
 
 		float toFloat( void ) const;
-		float    toInt(void) const;
+		int    toInt(void) const;
 };
 
 std::ostream &operator<<(std::ostream &os, const Fixed &fix);
